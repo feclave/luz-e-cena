@@ -1,21 +1,8 @@
+import { Movie } from '../../types';
 import Tag from '../Tag'
 import styles from './CardMovie.module.css'
 
-type Categoria = "2D" | "3D";
-
-type Censura = "Livre" | "10 anos" | "12 anos" | "14 anos" | "16 anos"; //devem ser copiadas do componente Tag pois foram criados lá
-
-interface CardMovieProps { //tipagem das props
-    src: string;
-    alt: string;
-    titulo: string;
-    categoria: Categoria;
-    censura: Censura;
-    genero: string;
-    duracao: number;
-}
-
-const CardMovie = (props: CardMovieProps) => { //como são muitas props é melhor desestruturar elas em uma const no código
+const CardMovie = (props: Movie) => { //como são muitas props é melhor desestruturar elas em uma const no código
 
     const { alt, src, titulo, genero, categoria, censura, duracao } = props;
     return (
