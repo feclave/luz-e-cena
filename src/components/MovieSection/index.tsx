@@ -4,26 +4,10 @@ import Fieldset from '../Fieldset'
 import InputText from '../InputText'
 import styles from './MovieSection.module.css'
 import MovieList from '../MovieList'
-import { Movie } from '../../types'
-import { getMovies } from '../../api'
-import { useEffect, useState } from 'react'
-
+import useFetchMovies from '../../hooks/useFetchMovies'
 
 const MovieSection = () => {
-    const [movies, setMovies] = useState<Movie[]>([]); //useState tipado só aceitará uma lista de filmes
-
-    const fetchMovies = async () => { //função assíncrona para chamar os filmes na api
-        try{
-            const movies = await getMovies(); //função assíncrona para pegar os filmes no db
-            setMovies(movies);
-        }catch(err) {
-            console.error("Erro ao buscar filmes" + err)
-        }
-    };
-
-    useEffect(() => {
-        fetchMovies();
-    })
+    const {movies, error, isLoading} = useFetchMovies(); //hook customizado para fazer a requisição, removendo essa responsabilidade do componente
 
   return (
     <main>
