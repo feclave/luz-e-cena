@@ -25,7 +25,7 @@ const useFetchMovies = () => {
 
     useEffect(() => {
         fetchMovies();
-    });
+    }, []); //array de depedências vazio.
   
     return { movies, isLoading, error}
 }
